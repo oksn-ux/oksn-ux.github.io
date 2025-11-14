@@ -1,183 +1,393 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oksana — Creative Marketing Strategist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --ink: #101118;
-      --soft-ink: #4b4f5a;
-      --line: #e7e5e2;
-      --bg: #f9f7f4;
+      --bg-1: #020617;
+      --bg-2: #020617;
+      --bg-3: #111827;
+      --accent: #e5e7eb;
+      --soft-accent: #9ca3af;
+      --pill: rgba(148, 163, 184, 0.18);
+      --border-subtle: rgba(75, 85, 99, 0.6);
+      --glow: rgba(148, 163, 184, 0.4);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--accent);
+      background:
+        radial-gradient(circle at top left, #1f2937 0, transparent 55%),
+        radial-gradient(circle at bottom right, #020617 0, transparent 55%),
+        linear-gradient(to bottom, var(--bg-1), var(--bg-2), var(--bg-3));
+    }
+
+    .page {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 3.5rem 1.75rem 4rem;
+      position: relative;
+    }
+
+    /* HERO */
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: var(--pill);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--soft-accent);
+    }
+
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+    }
+
+    .hero {
+      padding-top: 2.75rem;
+      padding-bottom: 5rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -10rem -25rem auto;
+      background: radial-gradient(circle at top, rgba(148, 163, 184, 0.35), transparent 65%);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: clamp(2.8rem, 4.1vw + 1.5rem, 4.6rem);
+      line-height: 1.08;
+      letter-spacing: 0.02em;
+      margin: 1.75rem 0 1rem;
+      text-shadow: 0 0 30px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--soft-accent);
+      max-width: 34rem;
       line-height: 1.7;
     }
 
-    header {
-      padding: 110px 20px 80px;
-      text-align: center;
+    .hero-meta {
+      margin-top: 2.25rem;
+      font-size: 0.95rem;
+      color: var(--soft-accent);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.8rem;
     }
 
-    h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(40px, 5vw, 60px);
-      font-weight: 300;
-      margin: 0;
-      letter-spacing: 0.02em;
+    .hero-meta span {
+      opacity: 0.9;
     }
 
-    h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(30px, 3.2vw, 40px);
-      font-weight: 300;
-      margin: 0 0 20px;
-    }
-
-    p {
-      max-width: 820px;
-      margin: 16px auto;
-      font-size: 18px;
-      color: var(--soft-ink);
-    }
-
-    section {
-      padding: 70px 20px;
-      border-top: 1px solid var(--line);
-      max-width: 940px;
-      margin: 0 auto;
-    }
-
-    .tagline {
-      font-size: 18px;
-      color: var(--soft-ink);
-      margin-top: 14px;
-      letter-spacing: 0.08em;
+    .hero-keywords {
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: rgba(209, 213, 219, 0.95);
     }
 
-    .pillars p {
-      margin: 8px auto;
+    /* SIDE NAV */
+
+    .side-nav {
+      position: fixed;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--soft-accent);
+      z-index: 40;
     }
 
-    strong {
-      color: var(--ink);
+    .side-nav a {
+      text-decoration: none;
+      color: var(--soft-accent);
+      padding: 0.32rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: transparent;
+      transition: all 0.18s ease-out;
+    }
+
+    .side-nav a:hover {
+      border-color: rgba(148, 163, 184, 0.9);
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 0 18px rgba(148, 163, 184, 0.45);
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding-top: 4.5rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--glow),
+        transparent
+      );
+      opacity: 0.7;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--soft-accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .section h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: clamp(1.9rem, 2.6vw, 2.4rem);
+      margin: 0 0 1.1rem;
+    }
+
+    .section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #e5e7eb;
+      max-width: 44rem;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 1.02rem;
+      color: #e5e7eb;
+    }
+
+    .section li {
+      margin-bottom: 0.4rem;
+    }
+
+    .pillars-list li strong,
+    .gtm-list li strong {
       font-weight: 500;
+      font-family: "Playfair Display", serif;
     }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px 60px;
-      font-size: 14px;
-      color: #8a8c94;
+    .footer {
+      padding-top: 4rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.95rem;
+      color: var(--soft-accent);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .side-nav {
+        display: none;
+      }
+
+      .page {
+        padding-inline: 1.25rem;
+      }
+
+      .hero {
+        padding-bottom: 3.5rem;
+      }
     }
   </style>
 </head>
-
 <body>
+  <!-- FLOATING SIDE NAV (DESKTOP) -->
+  <nav class="side-nav" aria-label="Section navigation">
+    <a href="#approach">Approach</a>
+    <a href="#problem">Problem</a>
+    <a href="#insight">Insight</a>
+    <a href="#audience">Audience</a>
+    <a href="#pillars">Pillars</a>
+    <a href="#content">Concepts</a>
+    <a href="#gtm">GTM</a>
+    <a href="#impact">Impact</a>
+    <a href="#about">About</a>
+  </nav>
 
-  <header>
-    <h1>Oksana — Creative Marketing Strategist</h1>
-    <div class="tagline">
-      Storytelling • Psychology • Strategy • Design
-    </div>
-  </header>
+  <div class="page">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        <span>Creative Strategy Portfolio</span>
+      </div>
 
-  <section>
-    <h2>My Approach to Strategy</h2>
-    <p>
-      I build strategy like an architect: psychology first, clarity second, emotion third.
-      Every narrative begins with how people think, why they care, and where attention naturally flows.
-      My work transforms these internal patterns into cinematic, emotionally grounded brand stories.
-    </p>
-  </section>
+      <h1 class="hero-title">
+        Oksana — Creative<br />
+        Marketing Strategist
+      </h1>
 
-  <section>
-    <h2>Problem / Opportunity</h2>
-    <p>
-      Brands rarely fail because of a lack of value — they fail because their story doesn't create emotional
-      resonance. I translate complex ideas into elegant clarity: the right message, told the right way,
-      at the right moment.
-    </p>
-  </section>
+      <p class="hero-sub">
+        I craft cinematic, psychology-driven narratives that help brands feel intentional,
+        unforgettable, and emotionally precise.
+      </p>
 
-  <section>
-    <h2>Strategic Insight</h2>
-    <p>
-      I extract psychologically driven insights from behavior patterns, audience emotion, competitive
-      landscapes, and platform dynamics. These insights become the engine for powerful messaging and
-      go-to-market direction.
-    </p>
-  </section>
+      <div class="hero-meta">
+        <span>Storytelling • Psychology • Strategy • Design</span>
+      </div>
 
-  <section>
-    <h2>Audience &amp; Platform Psychology</h2>
-    <p>
-      I map how audiences think, feel, and behave — and how each platform shapes their emotional response.
-      No content exists in a vacuum. I design for ecosystems, not individual posts.
-    </p>
-  </section>
+      <div class="hero-keywords">
+        NARRATIVE ARCHITECTURE • BEHAVIORAL INSIGHT • BRAND MEMORY
+      </div>
+    </header>
 
-  <section class="pillars">
-    <h2>Messaging Pillars</h2>
-    <p><strong>Clarity</strong> – the clean truth</p>
-    <p><strong>Emotion</strong> – the spark</p>
-    <p><strong>Authority</strong> – the grounding</p>
-    <p><strong>Story</strong> – the human anchor</p>
-  </section>
+    <!-- SECTIONS -->
 
-  <section>
-    <h2>Content &amp; Visual Concepts</h2>
-    <p>
-      I create cinematic, psychology-rooted story concepts using narrative hooks, visual metaphors,
-      emotional arcs, and platform-specific behaviors. Each concept is designed to deepen connection
-      and improve recall.
-    </p>
-  </section>
+    <section id="approach" class="section">
+      <div class="section-label">01 · Approach</div>
+      <h2>My Approach to Strategy</h2>
+      <p>
+        I build strategy like an architect: psychology first, clarity second, emotion third.
+        Every narrative begins with how people think, why they care, and where attention
+        naturally flows. My work transforms these internal patterns into cinematic,
+        emotionally grounded brand stories.
+      </p>
+    </section>
 
-  <section>
-    <h2>Go-To-Market Flow</h2>
-    <p><strong>Pre-Launch:</strong> narrative seeding</p>
-    <p><strong>Launch Week:</strong> emotional peak</p>
-    <p><strong>During Event:</strong> real-time storytelling</p>
-    <p><strong>Post-Launch:</strong> memory reinforcement</p>
-  </section>
+    <section id="problem" class="section">
+      <div class="section-label">02 · Problem / Opportunity</div>
+      <h2>Problem / Opportunity</h2>
+      <p>
+        Brands rarely fail because of a lack of value — they fail because their story
+        doesn’t create emotional resonance. I translate complex ideas into elegant clarity:
+        the right message, told the right way, at the right moment.
+      </p>
+    </section>
 
-  <section>
-    <h2>Projected Impact</h2>
-    <p>
-      My work strengthens narrative clarity, deepens emotional resonance, and elevates brand authority.
-      The result is a brand that feels inevitable — unforgettable in both structure and soul.
-    </p>
-  </section>
+    <section id="insight" class="section">
+      <div class="section-label">03 · Strategic Insight</div>
+      <h2>Strategic Insight</h2>
+      <p>
+        I extract psychologically driven insights from behavior patterns, audience emotion,
+        competitive landscapes, and platform dynamics. These insights become the engine for
+        powerful messaging and go-to-market direction.
+      </p>
+    </section>
 
-  <section>
-    <h2>Who I Am as a Strategist</h2>
-    <p>
-      I’m the strategist brands call when they want cinematic storytelling, psychological depth,
-      and strategic clarity. My work blends emotion with structure to create narratives that live in
-      people’s minds long after they close the deck.
-    </p>
-    <p style="text-align:center; margin-top:32px; font-size:16px; color:#777;">
-      Remote • Global • Fractional Strategist
-    </p>
-  </section>
+    <section id="audience" class="section">
+      <div class="section-label">04 · Audience & Platform</div>
+      <h2>Audience &amp; Platform Psychology</h2>
+      <p>
+        I map how audiences think, feel, and behave — and how each platform shapes their
+        emotional response. No content exists in a vacuum. I design for ecosystems, not
+        individual posts.
+      </p>
+    </section>
 
-  <footer>
-    © Oksana — Creative Marketing Strategist
-  </footer>
+    <section id="pillars" class="section">
+      <div class="section-label">05 · Messaging</div>
+      <h2>Messaging Pillars</h2>
+      <ul class="pillars-list">
+        <li><strong>Clarity</strong> – the clean truth</li>
+        <li><strong>Emotion</strong> – the spark</li>
+        <li><strong>Authority</strong> – the grounding</li>
+        <li><strong>Story</strong> – the human anchor</li>
+      </ul>
+    </section>
 
+    <section id="content" class="section">
+      <div class="section-label">06 · Concepts</div>
+      <h2>Content &amp; Visual Concepts</h2>
+      <p>
+        I create cinematic, psychology-rooted story concepts using narrative hooks, visual
+        metaphors, emotional arcs, and platform-specific behaviors. Each concept is
+        designed to deepen connection and improve recall.
+      </p>
+    </section>
+
+    <section id="gtm" class="section">
+      <div class="section-label">07 · Go-To-Market</div>
+      <h2>Go-To-Market Flow</h2>
+      <ul class="gtm-list">
+        <li><strong>Pre-Launch:</strong> narrative seeding</li>
+        <li><strong>Launch Week:</strong> emotional peak</li>
+        <li><strong>During Event:</strong> real-time storytelling</li>
+        <li><strong>Post-Launch:</strong> memory reinforcement</li>
+      </ul>
+    </section>
+
+    <section id="impact" class="section">
+      <div class="section-label">08 · Impact</div>
+      <h2>Projected Impact</h2>
+      <p>
+        My work strengthens narrative clarity, deepens emotional resonance, and elevates
+        brand authority. The result is a brand that feels inevitable — unforgettable in
+        both structure and soul.
+      </p>
+    </section>
+
+    <section id="about" class="section footer">
+      <div class="section-label">09 · About</div>
+      <h2>Who I Am as a Strategist</h2>
+      <p>
+        I’m the strategist brands call when they want cinematic storytelling, psychological
+        depth, and strategic clarity. My work blends emotion with structure to create
+        narratives that live in people’s minds long after they close the deck.
+      </p>
+      <p style="margin-top: 1.7rem;">
+        <strong>Remote • Global • Fractional Strategist</strong>
+      </p>
+    </section>
+  </div>
 </body>
+</html>
