@@ -5,6 +5,17 @@
   <title>Oksana — Creative Marketing Strategist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Basic SEO -->
+  <meta name="description" content="Oksana — Creative Marketing Strategist. Cinematic, psychology-driven brand narratives, GTM flows, and strategic storytelling. Remote, global, creative strategy.">
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Oksana — Creative Marketing Strategist">
+  <meta property="og:description" content="Cinematic, psychology-rooted strategy portfolio blending storytelling, behavioral insight, and brand architecture.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oksn-ux.github.io/">
+  <!-- If you later add a preview image, put its full URL here -->
+  <meta property="og:image" content="https://oksn-ux.github.io/og-preview.png">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +31,8 @@
       --pill: rgba(148, 163, 184, 0.18);
       --border-subtle: rgba(75, 85, 99, 0.6);
       --glow: rgba(148, 163, 184, 0.4);
+      --highlight: rgba(209, 213, 219, 0.9);
+      --link-pill: rgba(15, 23, 42, 0.9);
     }
 
     * {
@@ -39,13 +52,134 @@
         radial-gradient(circle at top left, #1f2937 0, transparent 55%),
         radial-gradient(circle at bottom right, #020617 0, transparent 55%),
         linear-gradient(to bottom, var(--bg-1), var(--bg-2), var(--bg-3));
+      position: relative;
+      opacity: 0;
+      transition: opacity 0.9s ease-out;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    /* Cinematic vignette + grain overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, 0.65) 100%);
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+      z-index: 0;
+    }
+
+    body::before {
+      /* very subtle faux-grain */
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 3px 3px, 3px 3px;
+      mix-blend-mode: soft-light;
+      opacity: 0.35;
+      z-index: 0;
     }
 
     .page {
       max-width: 72rem;
       margin: 0 auto;
-      padding: 3.5rem 1.75rem 4rem;
+      padding: 4.5rem 1.75rem 4rem;
       position: relative;
+      z-index: 1;
+    }
+
+    /* SCROLL PROGRESS BAR */
+
+    .scroll-progress {
+      position: fixed;
+      left: 1.25rem;
+      top: 20%;
+      width: 2px;
+      height: 60%;
+      background: rgba(30, 41, 59, 0.9);
+      overflow: hidden;
+      z-index: 22;
+      border-radius: 999px;
+    }
+
+    .scroll-progress-fill {
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--highlight), rgba(148,163,184,0.4));
+      box-shadow: 0 0 10px rgba(148,163,184,0.8);
+      border-radius: 999px;
+      transition: height 0.12s ease-out;
+    }
+
+    /* TOP NAV */
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(24px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.7), transparent);
+      border-bottom: 1px solid rgba(55, 65, 81, 0.7);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.7s ease-out 0.2s, transform 0.7s ease-out 0.2s;
+    }
+
+    body.loaded .top-nav {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .top-nav-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0.6rem 1.75rem 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .top-nav-brand {
+      font-family: "Playfair Display", serif;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: var(--soft-accent);
+    }
+
+    .top-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .top-nav-links a {
+      text-decoration: none;
+      color: var(--soft-accent);
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.18s ease-out;
+    }
+
+    .top-nav-links a:hover {
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.8);
+      background: var(--link-pill);
+      box-shadow: 0 0 12px rgba(148, 163, 184, 0.5);
     }
 
     /* HERO */
@@ -136,7 +270,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--soft-accent);
-      z-index: 40;
+      z-index: 25;
     }
 
     .side-nav a {
@@ -145,14 +279,14 @@
       padding: 0.32rem 0.6rem;
       border-radius: 999px;
       border: 1px solid transparent;
-      background: transparent;
+      background: rgba(15, 23, 42, 0.7);
       transition: all 0.18s ease-out;
     }
 
     .side-nav a:hover {
       border-color: rgba(148, 163, 184, 0.9);
       color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 1);
       box-shadow: 0 0 18px rgba(148, 163, 184, 0.45);
     }
 
@@ -194,6 +328,13 @@
       font-weight: 400;
       font-size: clamp(1.9rem, 2.6vw, 2.4rem);
       margin: 0 0 1.1rem;
+      transition: color 0.2s ease-out, text-shadow 0.2s ease-out, transform 0.2s ease-out;
+    }
+
+    .section h2:hover {
+      color: var(--highlight);
+      text-shadow: 0 0 18px rgba(148, 163, 184, 0.9);
+      transform: translateY(-1px);
     }
 
     .section p {
@@ -242,6 +383,74 @@
       transform: translateY(0);
     }
 
+    /* FLOATING ACTION BUTTONS */
+
+    .fab-container {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      z-index: 26;
+    }
+
+    .fab-button {
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.95);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: background 0.15s ease-out, box-shadow 0.15s ease-out, transform 0.12s ease-out;
+    }
+
+    .fab-button:hover {
+      background: rgba(15,23,42,1);
+      box-shadow: 0 0 16px rgba(148,163,184,0.8);
+      transform: translateY(-1px);
+    }
+
+    .fab-button span.icon {
+      font-size: 0.9rem;
+    }
+
+    .fab-button a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      bottom: 1.3rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      background: rgba(15,23,42,0.98);
+      color: var(--accent);
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.8);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      z-index: 27;
+      opacity: 0;
+      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+    }
+
+    .toast.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
     /* RESPONSIVE */
 
     @media (max-width: 960px) {
@@ -249,17 +458,59 @@
         display: none;
       }
 
+      .scroll-progress {
+        display: none;
+      }
+
       .page {
         padding-inline: 1.25rem;
+      }
+
+      .top-nav-inner {
+        padding-inline: 1.25rem;
+      }
+
+      .top-nav-links {
+        display: none;
       }
 
       .hero {
         padding-bottom: 3.5rem;
       }
+
+      .fab-container {
+        right: 1rem;
+        bottom: 1rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress">
+    <div class="scroll-progress-fill" id="scroll-fill"></div>
+  </div>
+
+  <!-- TOP NAV -->
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <div class="top-nav-brand">OKSN • STRATEGY</div>
+      <div class="top-nav-links">
+        <a href="#approach">Approach</a>
+        <a href="#problem">Problem</a>
+        <a href="#insight">Insight</a>
+        <a href="#audience">Audience</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#content">Concepts</a>
+        <a href="#cases">Cases</a>
+        <a href="#gtm">GTM</a>
+        <a href="#impact">Impact</a>
+        <a href="#about">About</a>
+        <a href="mailto:oksana.procyk1@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- FLOATING SIDE NAV (DESKTOP) -->
   <nav class="side-nav" aria-label="Section navigation">
     <a href="#approach">Approach</a>
@@ -268,10 +519,28 @@
     <a href="#audience">Audience</a>
     <a href="#pillars">Pillars</a>
     <a href="#content">Concepts</a>
+    <a href="#cases">Cases</a>
     <a href="#gtm">GTM</a>
     <a href="#impact">Impact</a>
     <a href="#about">About</a>
   </nav>
+
+  <!-- FLOATING ACTION BUTTONS -->
+  <div class="fab-container">
+    <button class="fab-button" id="copy-link-btn">
+      <span class="icon">🔗</span>
+      <span>COPY PORTFOLIO LINK</span>
+    </button>
+    <button class="fab-button">
+      <span class="icon">⬇️</span>
+      <a href="Oksana_Resume.pdf" download>
+        DOWNLOAD CV
+      </a>
+    </button>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">Link copied</div>
 
   <div class="page">
     <!-- HERO -->
@@ -364,8 +633,24 @@
       </p>
     </section>
 
+    <!-- CASE STUDY SECTION -->
+    <section id="cases" class="section reveal">
+      <div class="section-label">07 · Case Study</div>
+      <h2>Case Study — Narrative System for Launch</h2>
+      <p>
+        Example concept: designing a story architecture for a product or event launch.
+        I map the emotional throughline from first touch to post-launch memory, aligning
+        content, channels, and timing with how the audience actually thinks and feels.
+      </p>
+      <p>
+        The focus is on narrative sequencing: what people should feel, understand, and
+        remember at each phase — and which assets or formats best carry that emotion.
+        This becomes a reusable system, not a one-off campaign.
+      </p>
+    </section>
+
     <section id="gtm" class="section reveal">
-      <div class="section-label">07 · Go-To-Market</div>
+      <div class="section-label">08 · Go-To-Market</div>
       <h2>Go-To-Market Flow</h2>
       <ul class="gtm-list">
         <li><strong>Pre-Launch:</strong> narrative seeding</li>
@@ -376,7 +661,7 @@
     </section>
 
     <section id="impact" class="section reveal">
-      <div class="section-label">08 · Impact</div>
+      <div class="section-label">09 · Impact</div>
       <h2>Projected Impact</h2>
       <p>
         My work strengthens narrative clarity, deepens emotional resonance, and elevates
@@ -386,7 +671,7 @@
     </section>
 
     <section id="about" class="section footer reveal">
-      <div class="section-label">09 · About</div>
+      <div class="section-label">10 · About</div>
       <h2>Who I Am as a Strategist</h2>
       <p>
         I’m the strategist brands call when they want cinematic storytelling, psychological
@@ -396,14 +681,29 @@
       <p style="margin-top: 1.7rem;">
         <strong>Remote • Global • Creative Strategy</strong>
       </p>
+
+      <div style="
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(148,163,184,0.2);
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(148,163,184,0.6);
+      ">
+        OKSN — Oriented to Psychology · Kinetic Storytelling · Strategic Systems · Narrative Architecture
+      </div>
     </section>
   </div>
 
-  <!-- REVEAL ON SCROLL SCRIPT -->
+  <!-- SCRIPT: reveal on scroll, scroll progress, intro, copy link -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const reveals = document.querySelectorAll(".reveal");
+      // Intro fade
+      document.body.classList.add("loaded");
 
+      // Reveal on scroll
+      const reveals = document.querySelectorAll(".reveal");
       const observer = new IntersectionObserver(
         (entries, obs) => {
           entries.forEach((entry) => {
@@ -415,8 +715,37 @@
         },
         { threshold: 0.2 }
       );
-
       reveals.forEach((el) => observer.observe(el));
+
+      // Scroll progress
+      const fill = document.getElementById("scroll-fill");
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY || window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        fill.style.height = progress + "%";
+      }
+      updateScrollProgress();
+      window.addEventListener("scroll", updateScrollProgress);
+
+      // Copy portfolio link
+      const copyBtn = document.getElementById("copy-link-btn");
+      const toast = document.getElementById("toast");
+
+      if (copyBtn && toast) {
+        copyBtn.addEventListener("click", async () => {
+          try {
+            const url = window.location.origin + window.location.pathname;
+            await navigator.clipboard.writeText(url);
+            toast.classList.add("visible");
+            setTimeout(() => {
+              toast.classList.remove("visible");
+            }, 1400);
+          } catch (e) {
+            console.error("Copy failed", e);
+          }
+        });
+      }
     });
   </script>
 </body>
