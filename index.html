@@ -1,5 +1,4 @@
 
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Oksana — Creative Marketing Strategist</title>
@@ -97,7 +96,7 @@
       z-index: 1;
     }
 
-    /* SCROLL PROGRESS BAR */
+    /* SCROLL PROGRESS */
 
     .scroll-progress {
       position: fixed;
@@ -370,6 +369,43 @@
       color: var(--soft-accent);
     }
 
+    /* DOC BUTTONS */
+
+    .doc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.1rem;
+    }
+
+    .doc-link-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.8);
+      background: rgba(15,23,42,0.92);
+      color: var(--accent);
+      padding: 0.5rem 1.1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: background 0.15s ease-out, box-shadow 0.15s ease-out, transform 0.12s ease-out;
+    }
+
+    .doc-link-btn:hover {
+      background: rgba(15,23,42,1);
+      box-shadow: 0 0 16px rgba(148,163,184,0.8);
+      transform: translateY(-1px);
+    }
+
+    .doc-link-btn.secondary {
+      border-style: dashed;
+      opacity: 0.9;
+    }
+
     /* ANIMATIONS */
 
     .reveal {
@@ -496,6 +532,7 @@
     <div class="top-nav-inner">
       <div class="top-nav-brand">OKSN • OBSERVE · MOVE · BUILD · SHAPE</div>
       <div class="top-nav-links">
+        <a href="#docs">Docs</a>
         <a href="#approach">Approach</a>
         <a href="#problem">Problem</a>
         <a href="#insight">Insight</a>
@@ -513,6 +550,7 @@
 
   <!-- FLOATING SIDE NAV (DESKTOP) -->
   <nav class="side-nav" aria-label="Section navigation">
+    <a href="#docs">Docs</a>
     <a href="#approach">Approach</a>
     <a href="#problem">Problem</a>
     <a href="#insight">Insight</a>
@@ -533,8 +571,14 @@
     </button>
     <button class="fab-button">
       <span class="icon">⬇️</span>
-      <a href="Oksana_Resume.pdf" download>
+      <a href="Oksana_Resume_FinalPolished.pdf" download>
         DOWNLOAD CV
+      </a>
+    </button>
+    <button class="fab-button">
+      <span class="icon">📄</span>
+      <a href="OKSANA_Integrated_Portfolio.pdf" target="_blank" rel="noopener">
+        VIEW PORTFOLIO
       </a>
     </button>
   </div>
@@ -568,6 +612,25 @@
         OBSERVE • MOVE • BUILD • SHAPE
       </div>
     </header>
+
+    <!-- NEW DOCS SECTION -->
+    <section id="docs" class="section reveal">
+      <div class="section-label">00 · Documents</div>
+      <h2>Resume & Integrated Portfolio</h2>
+      <p>
+        A combined creative–clinical resume and a multi-page integrated portfolio that brings together OKSN™, The Axis Edit™, ROMRCE™, and the Shadow Light Studios challenge into one coherent creative identity.
+      </p>
+      <div class="doc-links">
+        <a class="doc-link-btn" href="Oksana_Resume_FinalPolished.pdf" target="_blank" rel="noopener">
+          <span>⬇️</span>
+          <span>View Resume (PDF)</span>
+        </a>
+        <a class="doc-link-btn secondary" href="OKSANA_Integrated_Portfolio.pdf" target="_blank" rel="noopener">
+          <span>📄</span>
+          <span>View Integrated Portfolio</span>
+        </a>
+      </div>
+    </section>
 
     <!-- SECTIONS -->
 
@@ -648,8 +711,7 @@
         sequence across channels.<br>
         <strong>Build:</strong> Construct systems — pillars, content series, and GTM arcs —
         that scale clarity instead of chaos.<br>
-        <strong>Shape:</strong> Craft meaning that endures: a story people remember, repeat,
-        and internalize.
+        <strong>Shape:</strong> Craft meaning that endures.
       </p>
       <p>
         The focus is on narrative sequencing: what people should feel, understand, and
@@ -829,4 +891,5 @@
       }
     });
   </script>
-</body>
+
+
