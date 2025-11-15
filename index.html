@@ -1,4 +1,5 @@
 
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Oksana — Creative Marketing Strategist</title>
@@ -12,7 +13,6 @@
   <meta property="og:description" content="Cinematic, psychology-rooted strategy portfolio blending storytelling, behavioral insight, and brand architecture.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://oksn-ux.github.io/">
-  <!-- If you later add a preview image, put its full URL here -->
   <meta property="og:image" content="https://oksn-ux.github.io/og-preview.png">
 
   <!-- Fonts -->
@@ -74,7 +74,7 @@
     }
 
     body::before {
-      /* very subtle faux-grain */
+      /* subtle faux-grain */
       content: "";
       position: fixed;
       inset: 0;
@@ -369,41 +369,43 @@
       color: var(--soft-accent);
     }
 
-    /* DOC BUTTONS */
+    /* CASE GRID */
 
-    .doc-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.1rem;
+    .case-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      margin-top: 1.5rem;
+      align-items: flex-start;
     }
 
-    .doc-link-btn {
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.8);
-      background: rgba(15,23,42,0.92);
-      color: var(--accent);
-      padding: 0.5rem 1.1rem;
-      font-size: 0.78rem;
+    .case-grid img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,0.35);
+      display: block;
+    }
+
+    .case-meta {
+      font-size: 0.85rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      cursor: pointer;
-      transition: background 0.15s ease-out, box-shadow 0.15s ease-out, transform 0.12s ease-out;
+      color: rgba(148,163,184,0.9);
+      margin-bottom: 0.55rem;
     }
 
-    .doc-link-btn:hover {
-      background: rgba(15,23,42,1);
-      box-shadow: 0 0 16px rgba(148,163,184,0.8);
-      transform: translateY(-1px);
+    .case-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.35rem;
     }
 
-    .doc-link-btn.secondary {
-      border-style: dashed;
-      opacity: 0.9;
+    .case-tags {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(148,163,184,0.7);
+      margin-bottom: 0.9rem;
     }
 
     /* ANIMATIONS */
@@ -419,7 +421,7 @@
       transform: translateY(0);
     }
 
-    /* FLOATING ACTION BUTTONS */
+    /* FAB BUTTONS */
 
     .fab-container {
       position: fixed;
@@ -518,6 +520,10 @@
         right: 1rem;
         bottom: 1rem;
       }
+
+      .case-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
   </style>
 </head>
@@ -530,33 +536,29 @@
   <!-- TOP NAV -->
   <nav class="top-nav">
     <div class="top-nav-inner">
-      <div class="top-nav-brand">OKSN • OBSERVE · MOVE · BUILD · SHAPE</div>
+      <div class="top-nav-brand">OKSN — OBSERVE · KINETIC · STRUCTURE · NARRATIVE</div>
       <div class="top-nav-links">
-        <a href="#docs">Docs</a>
         <a href="#approach">Approach</a>
         <a href="#problem">Problem</a>
         <a href="#insight">Insight</a>
         <a href="#audience">Audience</a>
         <a href="#pillars">Pillars</a>
-        <a href="#content">Concepts</a>
         <a href="#cases">Cases</a>
         <a href="#gtm">GTM</a>
         <a href="#impact">Impact</a>
         <a href="#about">About</a>
-        <a href="mailto:oksana.procyk1@gmail.com">Contact</a>
+        <a href="mailto:contact.oksn.studio@gmail.com">Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- FLOATING SIDE NAV (DESKTOP) -->
+  <!-- FLOATING SIDE NAV -->
   <nav class="side-nav" aria-label="Section navigation">
-    <a href="#docs">Docs</a>
     <a href="#approach">Approach</a>
     <a href="#problem">Problem</a>
     <a href="#insight">Insight</a>
     <a href="#audience">Audience</a>
     <a href="#pillars">Pillars</a>
-    <a href="#content">Concepts</a>
     <a href="#cases">Cases</a>
     <a href="#gtm">GTM</a>
     <a href="#impact">Impact</a>
@@ -571,14 +573,9 @@
     </button>
     <button class="fab-button">
       <span class="icon">⬇️</span>
-      <a href="Oksana_Resume_FinalPolished.pdf" download>
+      <!-- Make sure this file exists in your repo root -->
+      <a href="Oksana_Resume.pdf" download>
         DOWNLOAD CV
-      </a>
-    </button>
-    <button class="fab-button">
-      <span class="icon">📄</span>
-      <a href="OKSANA_Integrated_Portfolio.pdf" target="_blank" rel="noopener">
-        VIEW PORTFOLIO
       </a>
     </button>
   </div>
@@ -609,30 +606,11 @@
       </div>
 
       <div class="hero-keywords">
-        OBSERVE • MOVE • BUILD • SHAPE
+        OBSERVE · KINETIC · STRUCTURE · NARRATIVE
       </div>
     </header>
 
-    <!-- NEW DOCS SECTION -->
-    <section id="docs" class="section reveal">
-      <div class="section-label">00 · Documents</div>
-      <h2>Resume & Integrated Portfolio</h2>
-      <p>
-        A combined creative–clinical resume and a multi-page integrated portfolio that brings together OKSN™, The Axis Edit™, ROMRCE™, and the Shadow Light Studios challenge into one coherent creative identity.
-      </p>
-      <div class="doc-links">
-        <a class="doc-link-btn" href="Oksana_Resume_FinalPolished.pdf" target="_blank" rel="noopener">
-          <span>⬇️</span>
-          <span>View Resume (PDF)</span>
-        </a>
-        <a class="doc-link-btn secondary" href="OKSANA_Integrated_Portfolio.pdf" target="_blank" rel="noopener">
-          <span>📄</span>
-          <span>View Integrated Portfolio</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- SECTIONS -->
+    <!-- CORE STRATEGY SECTIONS -->
 
     <section id="approach" class="section reveal">
       <div class="section-label">01 · Approach</div>
@@ -696,44 +674,140 @@
       </p>
     </section>
 
-    <!-- CASE STUDY SECTION -->
+    <!-- CASE STUDIES LANDING -->
+
     <section id="cases" class="section reveal">
-      <div class="section-label">07 · Case Study</div>
-      <h2>Case Study — OKSN Narrative System for Launch</h2>
+      <div class="section-label">07 · Case Studies</div>
+      <h2>Selected Work</h2>
       <p>
-        Example concept: designing a story architecture for a product or event launch using
-        the OKSN framework — Observe, Move, Build, Shape.
+        A blend of original IP and client-style work, focused on cinematic storytelling,
+        structure, and emotional precision across brands and platforms.
       </p>
-      <p>
-        <strong>Observe:</strong> Understand what people truly feel — their fears, desires,
-        and unspoken motivations.<br>
-        <strong>Move:</strong> Shift emotion and attention with a deliberate narrative
-        sequence across channels.<br>
-        <strong>Build:</strong> Construct systems — pillars, content series, and GTM arcs —
-        that scale clarity instead of chaos.<br>
-        <strong>Shape:</strong> Craft meaning that endures.
-      </p>
-      <p>
-        The focus is on narrative sequencing: what people should feel, understand, and
-        remember at each phase — and which assets or formats best carry that emotion.
-        This becomes a reusable system, not a one-off campaign.
-      </p>
+
+      <!-- CASE 1: OKSN -->
+      <div class="case-grid" style="margin-top:2.5rem;" id="case-oksn">
+        <div>
+          <div class="case-meta">CASE 01 · OKSN</div>
+          <div class="case-title">OKSN — Observe · Kinetic · Structure · Narrative</div>
+          <div class="case-tags">NARRATIVE SYSTEM · STRATEGY FRAMEWORK</div>
+          <p>
+            OKSN is my personal operating system for strategy — a way of thinking that
+            turns vague “good ideas” into structured narrative architecture.
+          </p>
+          <p>
+            <strong>O — Observe:</strong> Read psychology, dynamics, and behavior before
+            you move a single piece.<br>
+            <strong>K — Kinetic:</strong> Move attention and emotion with deliberate
+            sequencing instead of random posting.<br>
+            <strong>S — Structure:</strong> Build containers — pillars, series, flows —
+            that keep the story coherent as it scales.<br>
+            <strong>N — Narrative:</strong> Shape the storyline people actually carry with
+            them when they walk away.
+          </p>
+          <p>
+            This case shows how I turn OKSN into a reusable system for launches,
+            positioning, and long-term content universes.
+          </p>
+        </div>
+        <div>
+          <img src="assets/oksn-system.png" alt="OKSN narrative framework visual">
+        </div>
+      </div>
+
+      <!-- CASE 2: THE AXIS EDIT -->
+      <div class="case-grid" style="margin-top:3.5rem;" id="case-axis">
+        <div>
+          <img src="assets/axis-edit-board.png" alt="The Axis Edit Pinterest and brand visuals">
+        </div>
+        <div>
+          <div class="case-meta">CASE 02 · THE AXIS EDIT</div>
+          <div class="case-title">The Axis Edit — Editorial Wellness & Brand Strategy</div>
+          <div class="case-tags">PINTEREST STRATEGY · EDITORIAL SYSTEM</div>
+          <p>
+            The Axis Edit is an editorial wellness brand built around nervous system-aware
+            strategy and cinematic visual language. My goal: make education feel like
+            scrolling a magazine spread.
+          </p>
+          <p>
+            I designed a Pinterest-first ecosystem: quote cards, micro-essays, carousel
+            flows, and glow-kit journeys that move a viewer from curiosity to “I feel seen”
+            to “I’m ready to work with this brand.”
+          </p>
+          <p>
+            The case study covers: visual direction, pin taxonomy, narrative arcs for
+            wellness education, and how the system can expand into YouTube, long-form, and
+            product experiences.
+          </p>
+        </div>
+      </div>
+
+      <!-- CASE 3: ROMRCE -->
+      <div class="case-grid" style="margin-top:3.5rem;" id="case-romrce">
+        <div>
+          <div class="case-meta">CASE 03 · ROMRCE</div>
+          <div class="case-title">ROMRCE — Dark Romance as a Cinematic Brand</div>
+          <div class="case-tags">FANDOM STRATEGY · PINTEREST · WORLD-BUILDING</div>
+          <p>
+            ROMRCE is my dark-romance book club universe — velvet crimson palettes, knives
+            and crowns, and quotes that feel like prophecy.
+          </p>
+          <p>
+            I built a visual language using flames, blades, crowns, and stormed skies to
+            mirror the emotional cadence of Maas-style fantasy: devotion, ruin, and
+            rebirth. Each quote tile is treated like a movie still — something people want
+            to save, share, and emotionally inhabit.
+          </p>
+          <p>
+            This case walks through the color system, typography, quote pairings, and how
+            to convert raw passages into visuals that feel collectible and bingeable.
+          </p>
+        </div>
+        <div>
+          <img src="assets/romrce-quotes.png" alt="ROMRCE Queen of Shadows quote visuals">
+        </div>
+      </div>
+
+      <!-- CASE 4: SHADOW LIGHT -->
+      <div class="case-grid" style="margin-top:3.5rem;" id="case-shadow">
+        <div>
+          <img src="assets/shadowlight-deck.png" alt="Shadow Light Studios creative strategy deck preview">
+        </div>
+        <div>
+          <div class="case-meta">CASE 04 · SHADOW LIGHT STUDIOS (SPEC)</div>
+          <div class="case-title">Shadow Light — 1M Subscriber Roadmap</div>
+          <div class="case-tags">YOUTUBE STRATEGY · CREATIVE DIRECTION</div>
+          <p>
+            For a YouTube-focused agency, I built a concept deck framed around
+            ambition vs. burnout, invisible costs of winning, and misused mental models.
+            Each concept was treated as a flagship episode, not just a video idea.
+          </p>
+          <p>
+            The work shows how I translate a founder’s psychology into narrative formats,
+            emotional hooks, and repeatable video series that can scale toward 1M+
+            subscribers while protecting the nervous system behind the channel.
+          </p>
+        </div>
+      </div>
     </section>
+
+    <!-- GTM -->
 
     <section id="gtm" class="section reveal">
       <div class="section-label">08 · Go-To-Market</div>
       <h2>Go-To-Market Flow</h2>
       <ul class="gtm-list">
-        <li><strong>Pre-Launch:</strong> narrative seeding</li>
-        <li><strong>Launch Week:</strong> emotional peak</li>
-        <li><strong>During Event:</strong> real-time storytelling</li>
-        <li><strong>Post-Launch:</strong> memory reinforcement</li>
+        <li><strong>Pre-Launch:</strong> narrative seeding and world-building</li>
+        <li><strong>Launch Week:</strong> emotional peak, hero content, and anchors</li>
+        <li><strong>During Event:</strong> real-time storytelling and pattern breaks</li>
+        <li><strong>Post-Launch:</strong> memory reinforcement, evergreen assets, and follow-up arcs</li>
       </ul>
     </section>
 
+    <!-- IMPACT -->
+
     <section id="impact" class="section reveal">
       <div class="section-label">09 · Impact</div>
-      <h2>Projected Impact</h2>
+      <h2>What My Work Is Designed To Do</h2>
       <p>
         My work strengthens narrative clarity, deepens emotional resonance, and elevates
         brand authority. The result is a brand that feels inevitable — unforgettable in
@@ -741,19 +815,21 @@
       </p>
     </section>
 
+    <!-- ABOUT + OKSN BLOCK -->
+
     <section id="about" class="section footer reveal">
       <div class="section-label">10 · About</div>
       <h2>Who I Am as a Strategist</h2>
       <p>
         I’m the strategist brands call when they want cinematic storytelling, psychological
-        depth, and strategic clarity. My work blends emotion with structure to create
-        narratives that live in people’s minds long after they close the deck.
+        depth, and structured clarity. My work blends emotion with systems — so a story
+        doesn’t just look good in a deck, it lives in people’s minds long after.
       </p>
       <p style="margin-top: 1.7rem;">
-        <strong>Remote • Global • Creative Strategy</strong>
+        <strong>London-based · Remote UK & Global · Creative Strategy</strong>
       </p>
 
-      <!-- OKSN Animated Framework — Version 6A -->
+      <!-- OKSN Framework -->
       <div
         class="oksn-framework"
         style="
@@ -771,45 +847,45 @@
       >
         <div class="oksn-part">
           <strong style="letter-spacing:0.12em; text-transform:uppercase; font-size:0.8rem; color:rgba(148,163,184,0.7);">
-            OKSN — Observe · Move · Build · Shape
+            OKSN — OBSERVE · KINETIC · STRUCTURE · NARRATIVE
           </strong>
         </div>
         <br>
 
         <div class="oksn-part">
           <strong>O — Observe</strong><br>
-          Understand what people truly feel.
+          Read the psyche, patterns, and dynamics beneath the surface.
         </div>
         <br>
 
         <div class="oksn-part">
-          <strong>K — Move</strong><br>
-          Shift emotion, attention, and culture.
+          <strong>K — Kinetic</strong><br>
+          Move attention and emotion with deliberate sequencing, not noise.
         </div>
         <br>
 
         <div class="oksn-part">
-          <strong>S — Build</strong><br>
-          Construct systems that scale clarity.
+          <strong>S — Structure</strong><br>
+          Build systems, not one-offs — pillars, series, and flows that hold the story together.
         </div>
         <br>
 
         <div class="oksn-part">
-          <strong>N — Shape</strong><br>
-          Craft meaning that endures.
+          <strong>N — Narrative</strong><br>
+          Shape the story people actually remember, repeat, and claim as their own.
         </div>
         <br>
 
         <div class="oksn-part">
           <em style="color:rgba(148,163,184,0.7);">
-            OKSN = Observe → Move → Build → Shape — a philosophy of clarity, motion, structure, and meaning.
+            OKSN = Observe → Kinetic → Structure → Narrative — a philosophy of clarity, motion, structure, and meaning.
           </em>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- SCRIPT: reveal on scroll, scroll progress, intro, copy link, OKSN animation -->
+  <!-- SCRIPT -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       // Intro fade
@@ -823,7 +899,6 @@
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
 
-              // Trigger OKSN animation when ABOUT section comes into view
               if (entry.target.id === "about") {
                 animateOKSN();
               }
@@ -854,7 +929,7 @@
       if (copyBtn && toast) {
         copyBtn.addEventListener("click", async () => {
           try {
-            const url = window.location.origin + window.location.pathname;
+            const url = window.location.href;
             await navigator.clipboard.writeText(url);
             toast.classList.add("visible");
             setTimeout(() => {
@@ -878,7 +953,6 @@
         const parts = container.querySelectorAll(".oksn-part");
 
         parts.forEach((part, index) => {
-          // initial state
           part.style.opacity = 0;
           part.style.transform = "translateY(8px)";
           part.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
@@ -886,10 +960,9 @@
           setTimeout(() => {
             part.style.opacity = 1;
             part.style.transform = "translateY(0)";
-          }, 250 + index * 220); // staggered timing
+          }, 250 + index * 220);
         });
       }
     });
   </script>
-
-
+</body>
