@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -87,6 +88,21 @@
       z-index: 0;
     }
 
+    /* PAGE TRANSITION OVERLAY */
+    .page-transition {
+      position: fixed;
+      inset: 0;
+      background: #020617;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.45s ease-out;
+      z-index: 40;
+    }
+    .page-transition.active {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
     .page {
       max-width: 72rem;
       margin: 0 auto;
@@ -153,6 +169,33 @@
       text-transform: uppercase;
       font-size: 0.78rem;
       color: var(--soft-accent);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Animated OKSN monogram */
+    .oksn-monogram {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(229,231,235,0.9);
+      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,0.3));
+      box-shadow: 0 0 12px rgba(148,163,184,0.6);
+      animation: pulseGlow 2.6s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 10px rgba(148,163,184,0.6); transform: scale(1); }
+      50% { box-shadow: 0 0 18px rgba(248,250,252,0.9); transform: scale(1.04); }
+      100% { box-shadow: 0 0 10px rgba(148,163,184,0.6); transform: scale(1); }
     }
 
     .top-nav-links {
@@ -448,6 +491,12 @@
       transition: background 0.15s ease-out, box-shadow 0.15s ease-out, transform 0.12s ease-out;
     }
 
+    .fab-button--primary {
+      border-color: rgba(248,250,252,0.9);
+      background: linear-gradient(to right, rgba(15,23,42,0.98), rgba(30,64,175,0.98));
+      box-shadow: 0 0 18px rgba(191,219,254,0.7);
+    }
+
     .fab-button:hover {
       background: rgba(15,23,42,1);
       box-shadow: 0 0 16px rgba(148,163,184,0.8);
@@ -527,6 +576,9 @@
   </style>
 </head>
 <body>
+  <!-- PAGE TRANSITION OVERLAY -->
+  <div class="page-transition" id="page-transition"></div>
+
   <!-- SCROLL PROGRESS -->
   <div class="scroll-progress">
     <div class="scroll-progress-fill" id="scroll-fill"></div>
@@ -535,7 +587,10 @@
   <!-- TOP NAV -->
   <nav class="top-nav">
     <div class="top-nav-inner">
-      <div class="top-nav-brand">OKSN — OBSERVE PERCEPTION · KINETIC INSIGHT · STRUCTURAL LOGIC · NARRATIVE EXPRESSION</div>
+      <div class="top-nav-brand">
+        <span class="oksn-monogram">OK</span>
+        <span>OKSN — OBSERVE · KINETIC · STRUCTURE · NARRATIVE</span>
+      </div>
       <div class="top-nav-links">
         <a href="#approach">Approach</a>
         <a href="#problem">Problem</a>
@@ -546,6 +601,7 @@
         <a href="#gtm">GTM</a>
         <a href="#impact">Impact</a>
         <a href="#about">About</a>
+        <a href="oksn-case-study.html">Case Study</a>
         <a href="mailto:contact.oksn.studio@gmail.com">Contact</a>
       </div>
     </div>
@@ -570,11 +626,24 @@
       <span class="icon">🔗</span>
       <span>COPY PORTFOLIO LINK</span>
     </button>
+
+    <button class="fab-button" onclick="window.location.href='oksn-case-study.html'">
+      <span class="icon">📘</span>
+      <span>OKSN CASE STUDY</span>
+    </button>
+
     <button class="fab-button">
       <span class="icon">⬇️</span>
       <!-- Make sure this file exists in your repo root -->
       <a href="Oksana_Resume.pdf" download>
         DOWNLOAD CV
+      </a>
+    </button>
+
+    <button class="fab-button fab-button--primary">
+      <span class="icon">✉️</span>
+      <a href="mailto:contact.oksn.studio@gmail.com?subject=Project%20Inquiry%20—%20OKSN%20Strategy">
+        HIRE ME
       </a>
     </button>
   </div>
@@ -605,7 +674,7 @@
       </div>
 
       <div class="hero-keywords">
-        OBSERVE PERCEPTION · KINETIC INSIGHT · STRUCTURAL LOGIC · NARRATIVE EXPRESSION
+        OBSERVE · KINETIC · STRUCTURE · NARRATIVE
       </div>
     </header>
 
@@ -687,21 +756,21 @@
       <div class="case-grid" style="margin-top:2.5rem;" id="case-oksn">
         <div>
           <div class="case-meta">CASE 01 · OKSN</div>
-          <div class="case-title">OKSN — Observe Perception · Kinetic Insight · Structural Logic · Narrative Expression</div>
+          <div class="case-title">OKSN — Observe · Kinetic · Structure · Narrative</div>
           <div class="case-tags">NARRATIVE SYSTEM · STRATEGY FRAMEWORK</div>
           <p>
             OKSN is my personal operating system for strategy — a way of thinking that
             turns vague “good ideas” into structured narrative architecture.
           </p>
           <p>
-            <strong>O — Observe Perception:</strong> Decode audience truth, emotional patterns,
-            and interpretation beneath the surface.<br>
-            <strong>K — Kinetic Insight:</strong> Read how the brand moves through culture —
-            attention shifts, behavior flows, momentum, friction, and opportunity.<br>
-            <strong>S — Structural Logic:</strong> Build systems instead of one-offs — pillars,
-            series, and frameworks that keep the story coherent as it scales.<br>
-            <strong>N — Narrative Expression:</strong> Shape the storyline people actually
-            remember, repeat, and claim as their own.
+            <strong>O — Observe:</strong> Read psychology, dynamics, and behavior before
+            you move a single piece.<br>
+            <strong>K — Kinetic:</strong> Move attention and emotion with deliberate
+            sequencing instead of random posting.<br>
+            <strong>S — Structure:</strong> Build containers — pillars, series, flows —
+            that keep the story coherent as it scales.<br>
+            <strong>N — Narrative:</strong> Shape the storyline people actually carry with
+            them when they walk away.
           </p>
           <p>
             This case shows how I turn OKSN into a reusable system for launches,
@@ -846,43 +915,38 @@
       >
         <div class="oksn-part">
           <strong style="letter-spacing:0.12em; text-transform:uppercase; font-size:0.8rem; color:rgba(148,163,184,0.7);">
-            OKSN — OBSERVE PERCEPTION · KINETIC INSIGHT · STRUCTURAL LOGIC · NARRATIVE EXPRESSION
+            OKSN — OBSERVE · KINETIC · STRUCTURE · NARRATIVE
           </strong>
         </div>
         <br>
 
         <div class="oksn-part">
-          <strong>O — Observe Perception</strong><br>
-          Decode how audiences think, feel, and interpret a brand — emotional patterns,
-          mental models, and reputation signals.
+          <strong>O — Observe</strong><br>
+          Read the psyche, patterns, and dynamics beneath the surface.
         </div>
         <br>
 
         <div class="oksn-part">
-          <strong>K — Kinetic Insight</strong><br>
-          Read how the brand moves through culture — attention shifts, behavior flows,
-          momentum, friction, and opportunity.
+          <strong>K — Kinetic</strong><br>
+          Move attention and emotion with deliberate sequencing, not noise.
         </div>
         <br>
 
         <div class="oksn-part">
-          <strong>S — Structural Logic</strong><br>
-          Analyze the system behind the story — strategic foundations, frameworks, pillars,
-          and messaging architecture that hold everything together.
+          <strong>S — Structure</strong><br>
+          Build systems, not one-offs — pillars, series, and flows that hold the story together.
         </div>
         <br>
 
         <div class="oksn-part">
-          <strong>N — Narrative Expression</strong><br>
-          Shape the story people actually remember, repeat, and carry with them — voice,
-          arcs, territories, and emotional imprint.
+          <strong>N — Narrative</strong><br>
+          Shape the story people actually remember, repeat, and claim as their own.
         </div>
         <br>
 
         <div class="oksn-part">
           <em style="color:rgba(148,163,184,0.7);">
-            OKSN = Observe Perception → Kinetic Insight → Structural Logic → Narrative Expression — a cognitive narrative framework
-            for clarity, momentum, structure, and meaning.
+            OKSN = Observe → Kinetic → Structure → Narrative — a philosophy of clarity, motion, structure, and meaning.
           </em>
         </div>
       </div>
@@ -967,6 +1031,27 @@
           }, 250 + index * 220);
         });
       }
+
+      // PAGE TRANSITIONS for internal .html links
+      const overlay = document.getElementById("page-transition");
+      const links = document.querySelectorAll('a[href$=".html"]');
+
+      links.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("http") || href.startsWith("mailto:")) return;
+
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = this.getAttribute("href");
+          if (!target) return;
+
+          overlay.classList.add("active");
+          setTimeout(() => {
+            window.location.href = target;
+          }, 320);
+        });
+      });
     });
   </script>
 </body>
+</html>
